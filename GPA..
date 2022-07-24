@@ -1,0 +1,66 @@
+% Ibraheem Oguntade
+% lab 005
+% Grade Point Average(GPA) calculator
+
+% p after a grade to indicate positive, while n means negative. 
+% example; An = A-, Ap = A+, Cn = C-, Dp =D+
+yes = 1;
+Y =1;
+no = 0;
+N =0;
+Ap = 4.00;
+A = 4.00;
+An = 3.67;
+Bp = 3.33;
+B = 3.00;
+Bn = 2.67;
+Cp = 2.30;
+C = 2.00;
+Cn = 1.67;
+Dp = 1.33;
+D = 1.00;
+Dn = 0.67;
+F = 0.00;
+
+question1 = input('what school do you attend?\n','s');
+% I added the question what school do you attend, so this program can be
+% used outside of university of toledo
+question2 = input('do you have quality point? (yes(Y) or no(N)\n '  );
+if question2 == 1
+    qpoints = input('What is your current quality point from your previous semesters? \n');
+    credits = input('How many credit hours did you have from your previous semester? \n');
+else
+    qpoints = 0;
+    credits = 0;
+    fprintf('So you are a freshman or you don''t have any credit hours \n\n')  
+end
+if qpoints == 0
+    gpa = 0;
+    fprintf('You don''t have a GPA at %s\n',question1)
+elseif qpoints> 0
+    gpa = qpoints/credits;
+    fprintf('your past GPA was %.2f\n',gpa) 
+end
+% calculating the current GPA
+fprintf('lets calculate your current GPA \n')
+gpaa = gpa;
+question3 = input(' do you have any other course you offered this semester? (yes(Y)or no(N)) \n');
+courses = [];
+while question3 == 1
+    course = input('what is the name of the course? \n','s');
+    grade = input('what is your grade in the course(it should be in the format (Ap represents A+),A,(An represents A-),Bp,B,Bn,....F \n');
+    q6 = input('How many credit hours was the course \n');
+    quality_point = grade * q6;
+    credits = q6 + credits;
+    qpoints = quality_point + qpoints;
+    gpaa = (qpoints/credits);
+    fprintf('your cummulative GPA is now %.2f \n',gpaa)
+    question3 = input(' do you have any other course you offered this semester? (yes/no) \n');
+end
+fprintf('Your cummulative GPA is %.2f \n',gpaa)
+fprintf('your cummulative quality point is %.1f \n', qpoints)
+fprintf('your total credit hours are %.1f \n',credits)
+% done    
+
+
+
